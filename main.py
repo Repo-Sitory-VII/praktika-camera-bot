@@ -7,3 +7,4 @@ def send_welcome(message):
 	bot.reply_to(message, "РАБОТАЕТ")
 	
 bot.infinity_polling()
+print("F")
