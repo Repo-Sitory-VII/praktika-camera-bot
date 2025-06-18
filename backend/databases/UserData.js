@@ -44,8 +44,8 @@ User.init(
 	}
 );
 
-class Achievment extends Model {}
-Achievment.init(
+class Achievement extends Model {}
+Achievement.init(
 	{
 		name: {
 			type: DataTypes.STRING,
@@ -62,8 +62,8 @@ Achievment.init(
 	}
 );
 
-class UserAchievment extends Model {}
-UserAchievment.init(
+class UserAchievement extends Model {}
+UserAchievement.init(
 	{
 		timestamp: {
 			type: DataTypes.DATE,
@@ -73,15 +73,16 @@ UserAchievment.init(
 	},
 	{
 		sequelize: UserDataDB,
-		timestamps: false
+		timestamps: false,
 	}
 );
 
-User.belongsToMany(Achievment, { through: UserAchievment });
-Achievment.belongsToMany(User, { through: UserAchievment });
+User.belongsToMany(Achievement, { through: UserAchievement });
+Achievement.belongsToMany(User, { through: UserAchievement });
 
 module.exports = {
 	UserDataDB,
 	User,
-	Achievment
+	Achievment: Achievement,
+	UserAchievment: UserAchievement
 }

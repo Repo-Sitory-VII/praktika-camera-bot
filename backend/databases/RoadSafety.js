@@ -67,7 +67,11 @@ Task.init(
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		objectsCount: {
+		quota: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+		},
+		objectsDone: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			defaultValue: 0
@@ -80,7 +84,7 @@ Task.init(
 		deadline: {
 			type: DataTypes.DATEONLY,
 			allowNull: false
-		}
+		},
 	},
 	{
 		sequelize: RoadSafetyDB,
@@ -145,7 +149,7 @@ Task.hasMany(ActivityLog);
 ActivityLog.belongsTo(Task);
 
 module.exports = {
-	WorkDataDB: RoadSafetyDB,
+	RoadSafetyDB,
 	Camera,
 	Scenario,
 	Task,
