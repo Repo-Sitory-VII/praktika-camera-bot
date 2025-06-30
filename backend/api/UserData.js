@@ -1,11 +1,13 @@
-const { response } = require('express');
-const { User, Achievment: Achievement, UserAchievment } = require('../databases/UserData');
-const { DELETE } = require('sequelize/lib/query-types');
+// импорт моделей БД
+const { User, Achievement, UserAchievement } = require('../databases/UserData');
 
+// обьект содержащий маршруты API и функции для выполнения http методов
 const endpoints = {
 	'/users': {
 		GET: async (req, res) => {
-			res.status(200).send(await User.findAll());
+			res.status(200).send(await User.findAll({
+				...(req.query['include-achievements'] === 'true') && { include: Achievement }
+			}));
 		},
 		POST: async (req, res) => {
 			try {
@@ -18,12 +20,14 @@ const endpoints = {
 	},
 	'/users/:userId': {
 		GET: async (req, res) => {
-			const entry = await User.findByPk(req.params.userId);
-			res.status(entry ? 404 : 200).send(entry);
+			const entry = await User.findByPk(req.params.userId, {
+				...(req.query['include-achievements'] === 'true') && { include: Achievement }
+			});
+			res.status(entry ? 200 : 404).send(entry);
 		},
 		PATCH: async (req, res) => {
 			try {
-				res.status(200).send(await User.update(req.body, { where: { id: req.params.userId } }));
+				res.status((await User.update(req.body, { where: { id: req.params.achievementId } }))[0] == 0 ? 404 : 200).send();
 			}
 			catch (error) {
 				res.status(400).send(error);
@@ -35,16 +39,22 @@ const endpoints = {
 	},
 	'/users/:userId/achievements': {
 		GET: async (req, res) => {
-			res.status(200).send(await UserAchievment.findAll({ where: { UserId: req.params.userId } }));
+			const entry = await User.findByPk(req.params.userId)
+			if (entry)
+				res.status(200).send(entry.getAchievements());
+			else
+				res.status(400).send();
 		}
 	},
 	'/users/:userId/achievements/:achievementId': {
 		GET: async (req, res) => {
-			res.status(200).send(await UserAchievment.findOne({ where: { UserId: req.params.userId, AchievmentId: req.params.achievementId } }));
+			const entry = await UserAchievement.findOne({ where: { UserId: req.params.userId, AchievmentId: req.params.achievementId } });
+			res.status(entry ? 200 : 404).send();
 		},
 		POST: async (req, res) => {
+			console.log('grant ach')
 			try {
-			res.status(200).send(await UserAchievment.create({ UserId: req.params.userId, AchievmentId: req.params.achievementId }));
+			// res.status(200).send(await UserAchievment.create({ UserId: req.params.userId, AchievmentId: req.params.achievementId }));
 			}
 			catch (error) {
 				res.status(400).send(error);
@@ -52,7 +62,7 @@ const endpoints = {
 		},
 		DELETE: async (req, res) => {
 			try {
-				res.status(200).send(await UserAchievment.destroy({ where: { UserId: req.params.userId, AchievmentId: req.params.achievementId } }));
+				res.status(200).send(await UserAchievement.destroy({ where: { UserId: req.params.userId, AchievmentId: req.params.achievementId } }));
 			}
 			catch (error) {
 				res.status(400).send(error);
@@ -78,18 +88,24 @@ const endpoints = {
 	{
 		GET: async (req, res) => {
 			const entry = await Achievement.findByPk(req.params.achievementId);
-			res.status(entry ? 404 : 200).send(entry);
+			res.status(entry ? 200 : 404).send(entry);
 		},
 		PATCH: async (req, res) => {
 			try {
-				res.status(200).send(await Achievement.update(req.body, { where: { id: req.params.achievementId } }));
+				res.status((await Achievement.update(req.body, { where: { id: req.params.achievementId } }))[0] == 0 ? 404 : 200).send();
 			}
 			catch (error) {
 				res.status(400).send(error);
 			}
 		},
 		DELETE: async (req, res) => {
-			res.status(await Achievement.destroy({ where: { id: req.params.achievementId }}) == 0 ? 404 : 200).send({});
+			res.status(await Achievement.destroy({ where: { id: req.params.achievementId }}) == 0 ? 404 : 200).send();
+		}
+	},
+	'/achievements/:achievementId/users':
+	{
+		GET: async (req, res) => {
+			res.status(200).send(await UserAchievement.findAll({ where: { aAhievementId: req.params.achievementId } }));
 		}
 	}
 }

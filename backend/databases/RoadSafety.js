@@ -4,8 +4,9 @@ const { User } = require('./UserData');
 
 const RoadSafetyDB = new Sequelize({
 	dialect: 'sqlite',
-	storage: './databases/WorkData.sqlite'
+	storage: './backend/databases/RoadSafety.sqlite'
 });
+RoadSafetyDB.sync({ force: false, alter: false }).then(() => console.log('RoadSafetyDB synched'));
 
 class Camera extends Model {}
 Camera.init(
@@ -14,11 +15,11 @@ Camera.init(
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		xCoord: {
+		longitude: {
 			type: DataTypes.REAL,
 			allowNull: false
 		},
-		yCoord: {
+		latitude: {
 			type: DataTypes.REAL,
 			allowNull: false
 		},

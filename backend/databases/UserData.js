@@ -1,13 +1,17 @@
-const { Sequelize } = require('sequelize');
-const { Model, DataTypes } = require('sequelize');
+// импортировать элементы из модуля sequelize
+const { Sequelize, Model, DataTypes } = require('sequelize');
 
+// объект sequelize для обеспечения связи
 const UserDataDB = new Sequelize({
 	dialect: 'sqlite',
-	storage: './databases/UserData.sqlite'
+	storage: './backend/databases/UserData.sqlite'
 });
+UserDataDB.sync({ force: true, alter: false }).then(() => console.log('UserDataDB synched'));
 
+// декларация класса определяет таблицу в БД
 class User extends Model {}
 User.init(
+	// поля таблицы
 	{
 		id: {
 			type: DataTypes.BIGINT,
@@ -23,7 +27,7 @@ User.init(
 			type: DataTypes.STRING,
 			unique: true
 		},
-		registration_date: {
+		registrationDate: {
 			type: DataTypes.DATEONLY,
 			defaultValue: DataTypes.NOW
 		},
@@ -83,6 +87,6 @@ Achievement.belongsToMany(User, { through: UserAchievement });
 module.exports = {
 	UserDataDB,
 	User,
-	Achievment: Achievement,
-	UserAchievment: UserAchievement
+	Achievement,
+	UserAchievement
 }
