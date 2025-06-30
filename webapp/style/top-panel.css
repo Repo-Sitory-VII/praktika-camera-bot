@@ -1,0 +1,86 @@
+.top-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    z-index: 100;
+    background-color:#F6F2FA;
+    border-radius: 0px 0px 20px 20px;
+    box-shadow: 0px 10px 40px 0px #a6b2cf;
+}
+.top-panel #info {
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    padding: 3.5%;
+    right: 0;
+}
+.top-panel #padding {
+    padding: 7% 0% 0% 7%;
+    margin: 0px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.profile-header {
+    padding-bottom: 20px;
+    margin: 0px;
+    display: flex;
+}
+.profile-header img{
+    width: 25%;
+    height: 25%;
+    object-fit: contain;
+    border-radius: 100%;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+.profile-header .information {
+    position: relative;
+    left: 5%;
+    font-weight: 500;
+    
+    overflow: hidden;
+    width: 225px;
+}
+.profile-header .information #NAME {
+    font-weight: 600;
+
+    will-change: transform;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+    left: 0px;
+}
+
+.profile-header .information #nick-name {
+    position: relative;
+    line-height: 1.1;
+    margin: 0px;
+    top: 30%;
+    margin-bottom: 15px;
+
+    display: inline-block;
+    width: 100%;
+}
+.profile-header .information .data {
+    margin: 0px;
+    margin-top: 20%;
+    font-size: 12px;
+}
+.profile-header .information .badges {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    top: 27%;
+    right: -20%;
+    background-color:#F6F2FA;
+}
+.profile-header .information .badges img{
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    margin: 0px;
+}

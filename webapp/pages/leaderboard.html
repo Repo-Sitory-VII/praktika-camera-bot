@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../style/main.css" rel="stylesheet">
+    <link href="../style/top-panel.css" rel="stylesheet">
+    <link href="../style/bottom-panel.css" rel="stylesheet">
+    <link href="../style/leaderboard.css" rel="stylesheet">
+    <title>leaderboard</title>
+</head>
+<body>
+    <div class="top-panel">
+        <div class="profile-header">
+            <img src="../resources/test/avatar.png" alt="avatar">
+            <div class="information">
+                <p id="nick-name">
+                    <span style="font-size: 22px;" id="NAME">Некитка</span><br>
+                    <span style="font-size: 12px;">@<span style="text-decoration: underline;">shinkarenko</span></span>
+                </p>
+                <div class="badges">
+                    <img src="../resources/test/badges_1.png" alt="avatar">
+                    <img src="../resources/test/badges_2.png" alt="avatar">
+                    <img src="../resources/test/badges_3.png" alt="avatar">
+                </div>
+                <p class="data">стал(-а) участником с 9 июня, 2025</p>
+            </div>
+        </div>
+    </div>
+    <div id="app">
+        <table class="leaderboard">
+            <tr v-for="user in leaderboard" :key="user.id">
+                <td class="number" id="first">{{user.id + 1}}</td>
+                <td class="img"><div :style="{ 'background-image': 'url(' + user.img + ')' }"></div></td>
+                <td class="name">{{user.name}}</td>
+                <td class="score">{{user.score}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="bottom-panel">
+        <div class="nav-item" id="profile">
+            <div class="nav-effect"></div>
+            <div class="nav-icon"></div>
+        </div>
+        <div class="nav-item" id="home">
+            <div class="nav-effect"></div>
+            <div class="nav-icon"></div>
+        </div>
+        <div class="nav-item" id="leaderboard">
+            <div class="nav-effect"></div>
+            <div class="nav-icon"></div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../scripts/leaderboard.js"></script>
+    <script src="../scripts/bottom-panel.js"></script>
+</body>
+</html>

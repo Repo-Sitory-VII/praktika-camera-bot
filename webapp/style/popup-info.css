@@ -1,0 +1,37 @@
+.popup-info {
+  position: fixed;
+  z-index: 200;
+  right: 10%;
+  top: 6%;
+  width: 65%;
+  height: auto;
+  border-radius: 20px;
+  background: rgba(246,242,250,0.9);
+  border: 3px  solid #47526e;
+}
+.popup-info #text-info{
+  width: 80%;
+  height: 80%;
+  padding: 10%;
+  text-indent: 5px;
+  font-size: 16px;
+  white-space: wrap;
+  color: #4c4b4b;
+}
+.popup-info-enter-active {
+  animation: myAnim 0.2s ease-in-out forwards;
+}
+.popup-info-leave-active {
+  animation: myAnim 0.2s ease-in-out reverse forwards;
+}
+
+@keyframes myAnim {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

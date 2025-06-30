@@ -1,0 +1,25 @@
+.container-achiv {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    width: auto;
+    height: calc(80vh - 60px);
+    margin: 15px;
+    background-color: #F6F2FA;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-top: 150px;
+}
+.container-achiv .block {
+    background-color: initial;
+    border-radius: initial;
+    box-shadow: initial;
+}
+.container-achiv .content-row {
+    gap: 20px;
+}
+.container-achiv .block {
+    width: 90%;
+}

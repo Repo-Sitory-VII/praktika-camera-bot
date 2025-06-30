@@ -1,0 +1,64 @@
+.blocks {
+    height: calc(82% - 70px);
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow-y: auto;
+    padding-top: 60px;
+}
+.block {
+    width: 40%;
+    height: 145px;
+    padding: 1%;
+    background-color: #F6F2FA;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px 0px #a6b1ce;
+}
+.block .name-num {
+    text-align: center;
+    margin: 0px;
+    width: 100%;
+    font-family: 'Bakbak One';
+    font-size: 24px;
+    font-weight: 500;
+}
+.block img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+    margin-left: 25%;
+}
+.achiv {
+    width: 85%;
+    height: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.achiv .img {
+    width: 74px;
+    height: 74px;
+    background: url('../resources/test/achiv.png') center/cover no-repeat;
+    border: 5px solid #5F6B8C;
+    border-radius: 15px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.achiv .name {
+    padding-bottom: 10px;
+    font-size: 18px;
+}
+.achiv .description {
+    padding-bottom: 5px;
+    padding-right: 15px;
+    text-justify: auto;
+    word-spacing: 5px;
+}
+

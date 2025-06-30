@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+    <link href="../style/main.css" rel="stylesheet">
+    <link href="../style/top-panel.css" rel="stylesheet">
+    <link href="../style/list-of-task.css" rel="stylesheet">
+    <link href="../style/bottom-panel.css" rel="stylesheet">
+    <link href="../style/popup-info.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <div class="top-panel">
+            <img src="../resources/test/info.png" alt="info" id="info"
+            @click="togglePopup">
+            <p id="recently">Недавнее...</p>
+            <task v-for="item in list_of_task" :key="item.id"
+            v-show="item.id === recently_task_id" :name="item.name" :count="item.count"></task>
+        </div>
+        <transition name="popup-info">
+            <div class="popup-info" v-if="isOpen">
+                <div id="text-info">
+                    Информация о нашем <span style="font-weight: bolder;">приложении</span>:
+                    <p>1. Телеграмм-бот для разметки приложений</p>
+                    <p>2. Выполняйте задания чтобы получить очки</p>
+                    <p>3. Получите топ 1 в таблице лидеров</p>
+                </div>
+            </div>
+        </transition>
+        <div class="task" v-show="hadTasks === false">
+            <div id="name">Задач пока нет :(</div>
+            <img src="" alt="" id="status">
+        </div>
+        <div class="list-of-task">
+            <task v-for="item in list_of_task" :key="item.id" :name="item.name" :count="item.count"></task> <!--нужен переход на workpage-->
+        </div>
+    </div>
+    <div class="bottom-panel">
+        <div class="nav-item" id="profile">
+            <div class="nav-effect"></div>
+            <div class="nav-icon"></div>
+        </div>
+        <div class="nav-item" id="home">
+            <div class="nav-effect"></div>
+            <div class="nav-icon"></div>
+        </div>
+        <div class="nav-item" id="leaderboard">
+            <div class="nav-effect"></div>
+            <div class="nav-icon"></div>
+        </div>
+    </div>
+    <script type="text/x-template" id="task-template">
+        <div class="container-task">
+            <div class="task">
+            <div id="name">{{name}}</div>
+            <img src="" alt="" id="status">
+            </div>
+            <div class="bar">
+            <div id="progress" :style="{ width: progressPercent + '%'}" :style="{ 'background-color': progressColor }"></div>
+            <div id="count">{{count}} ({{Math.round(progressPercent)}}%)</div>
+            </div>
+        </div>
+    </script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../scripts/mainpage.js"></script>
+    <script src="../scripts/bottom-panel.js"></script>
+</body>
+</html>

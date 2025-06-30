@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../style/main.css" rel="stylesheet">
+    <link href="../style/top-panel.css" rel="stylesheet">
+    <link href="../style/bottom-panel.css" rel="stylesheet">
+    <link href="../style/work.css" rel="stylesheet">
+    <link href="../style/list-of-task.css" rel="stylesheet">
+    <link href="../style/hint-animation.css" rel="stylesheet">
+    <link href="../style/popup-info.css" rel="stylesheet">
+    <link href="../style/slider.css" rel="stylesheet">
+    <title>work</title>
+</head>
+<body>
+    <div id="app">
+            <div class="top-panel">
+            <img src="../resources/test/info.png" alt="info" id="info"
+            @click="togglePopup">
+            <p id="padding"></p>
+            <div class="task count">
+                <div id="name">Проверено:<span style="padding-left: 10%;" id="count">0</span></div>
+            </div>
+        </div>
+        <transition name="popup-info">
+            <div class="popup-info" v-if="isOpen">
+                <div id="text-info">
+                    Информация о нашем <span style="font-weight: bolder;">приложении</span>:
+                    <p>1. Телеграмм-бот для разметки приложений</p>
+                    <p>2. Выполняйте задания чтобы получить очки</p>
+                    <p>3. Получите топ 1 в таблице лидеров</p>
+                </div>
+            </div>
+        </transition>
+        <div class="hint">
+            <div class="left"></div>
+            <div class="swipe">
+                <p>Свайпните</p>
+                <div id="img-l"></div>
+                <div id="img-r"></div>
+            </div>
+            <div class="right"></div>
+        </div>
+        <div class="work" >
+            <p id="name">ПДД на дорогах</p>
+            <div class="slider" id="photo">
+                <img src="../resources/cameras/1.jpg" class="preview-image" id="mainImage">
+                <div class="fullscreen-slider" id="fullscreenSlider">
+                    <span class="close-btn" id="closeBtn">&times;</span>
+                    <div class="slides-container" id="slidesContainer">
+                        <img src="../resources/cameras/1.jpg" class="slide">
+                        <img src="../resources/cameras/2.jpg" class="slide">
+                        <img src="../resources/cameras/3.jpg" class="slide">
+                    </div>
+                    <a class="prev" id="prevBtn">&#10094;</a>
+                    <a class="next" id="nextBtn">&#10095;</a>
+                </div>
+            </div>
+            <div class="swipe-hint right" id="yesHint">ДА</div>
+            <div class="swipe-hint left" id="noHint">НЕТ</div>
+            <div class="address">
+                <div id="img"></div>
+                <div id="link"><a href="">ул. Пушкина д. Калатушкина 10</a></div>
+            </div>
+            <div class="instruction">
+                Инструкция:<br>
+                1. Вам нужно просмотреть фотографию с камеры города.<br>
+                2. Вы можете нажать на адрес - местоположение данной камеры.<br>
+                3. Вы можете нажать на фотографию и рассмотреть поближе.<br>
+                4. Если Вы видите яму на фотографии, свайпните вправо, иначе влево. 
+                Если вы сомневаетесь над ответом, также свайпните влево.
+            </div>
+        </div>
+        <div class="bottom-panel">
+        <div class="nav-item" id="profile">
+            <div class="nav-effect"></div>
+            <div class="nav-icon"></div>
+        </div>
+        <div class="nav-item" id="home">
+            <div class="nav-effect"></div>
+            <div class="nav-icon"></div>
+        </div>
+        <div class="nav-item" id="leaderboard">
+            <div class="nav-effect"></div>
+            <div class="nav-icon"></div>
+        </div>
+    </div>
+    </div>
+    <script src="../scripts/slider.js"></script>
+    <script src="../scripts/swipe.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../scripts/mainpage.js"></script>
+    <script src="../scripts/bottom-panel.js"></script>
+</body>
+</html>

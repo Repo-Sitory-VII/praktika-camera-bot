@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    padding-bottom: 60px; /* Высота нижней панели */
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: 'Inter';
+    font-weight: 600;
+    color:#4C4B4B;
+    background-color: #CAD6F4;
+}
+body {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+body.fade-out {
+    opacity: 0;
+}
