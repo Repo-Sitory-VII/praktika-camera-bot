@@ -1,0 +1,24 @@
+{
+  "name": "praktika-camera-bot",
+  "version": "1.0.0",
+  "description": "test commit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Repo-Sitory-VII/praktika-camera-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Repo-Sitory-VII/praktika-camera-bot/issues"
+  },
+  "homepage": "https://github.com/Repo-Sitory-VII/praktika-camera-bot#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
+  }
+}
